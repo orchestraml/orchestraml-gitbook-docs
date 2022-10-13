@@ -8,10 +8,10 @@ The `log_code_block` API is used for uniquely identifying a `codeBlock` . The `s
 
 ### Arguments
 
-| Argument        | Details                                                      |
-| --------------- | ------------------------------------------------------------ |
-| codeblock\_name | (String, Required) The name used to identify  the codeblock. |
-|                 |                                                              |
+| Argument        | Details                                                                                                                                          |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| codeblock\_name | (String, Required) The name used to identify  the codeblock.                                                                                     |
+| nested\_under   | (String, Optional) The name of the codeblock  under which this codeblock should be placed under. This should only be used for nested codeblocks. |
 
 The `log_code_block` API will most commonly be used with the `start` and `end` APIs.
 
