@@ -2,6 +2,34 @@
 
 The `log_code_block` API is used for uniquely identifying a `codeBlock` . The `start` or `end` methods of this codeBlock are used to indicate where the block starts and ends and what it's inputs and outputs are.&#x20;
 
+Code blocks can be nested, i.e. a new code block could be `start` ed while an outer code block has not yet `end` ed.
+
+```
+orchestra.log_code_block('outer').start()
+...
+...
+orchestra.log_code_block('inner').start()
+...
+orchestra.log_code_block('inner').end()
+...
+...
+orchestra.log_code_block('outer').end()
+```
+
+In cases where there are multiple threads independently logging nested code blocks, it would be better to explicitly say which code block is `nested` under which other code block. E.g.
+
+```
+orchestra.log_code_block('outer').start()
+...
+...
+orchestra.log_code_block('inner', nested_under='outer').start()
+...
+orchestra.log_code_block('inner').end()
+...
+...
+orchestra.log_code_block('outer').end()
+```
+
 `codeBlocks` are also used for declaring the `createdUsing` relationships. Consider the case where a `codeBlock` uses some input feature/s and produces new ones. E.g. consider the case where an input feature called `timestamp` is used for creating additional features named `hour`, `minute`and `day` . So, each of the features `hour`, `minute` and `day` should be marked as `createdUsing` the input feature `timestamp`.
 
 
