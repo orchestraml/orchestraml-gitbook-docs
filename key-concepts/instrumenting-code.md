@@ -34,3 +34,10 @@ Similarly, there are _two ways that Features can be defined as outputs_ to a giv
 
 1. Written to an external data source, within the Code Block, and then registered with Orchestra using the `log_features()` command.
 2. Passed directly, as columns of an in-memory dataframe, and registered with Orchestra using the `log_codeblock().end()` command.
+
+### 3. Phone Home
+
+Orchestralib collects basic metadata about usage. This comprises of timestamp, hostname, organization name, etc.
+
+To opt out of this set the environment variable `ORCHESTRAML_PHONE_HOME` to `False`.
+
